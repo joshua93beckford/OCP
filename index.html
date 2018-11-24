@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="./stylel.css">
+    <title>OCP</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html">
+                <img src="./OCP.png" width="62" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./home.html">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOA.html">
+                            ODOA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOC.html">
+                            ODOC
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOCA.html">
+                            ODOCA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOD.html">
+                            ODOD
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOE.html">
+                            ODOE
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOFA.html">
+                            ODOFA
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOIE.html">
+                            ODOIE
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOJ.html">
+                            ODOJ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOS.html">
+                            ODOS
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./ODOT.html">
+                            ODOT
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="v-header container">
+        <div class="fullscreen-video-wrap">
+            <video src="./ezi.mov" autoplay="true" loop="true"></video>
+        </div>
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1>ONESIMES CORP. HEADQUARTERS</h1>
+            <p>At ONESIMES CORP. we are more than a corporation,
+                <br> We Are A Nation.</p>
+            <p>Are Sovereignty Is Granted By God</p>
+            <a href="./home.html" class="btn">Go To Home</a>
+        </div>
+    </header>
+
+
+    <button id="button1">Get Bitcoin Price</button>
+    <div id="btcbid"></div>
+    <div id="btcask"></div>
+    <button id="button2">Get BANCA Price</button>
+    <div id="bancabid"></div>
+    <div id="bancaask"></div>
+    <button id="button3">Get Bytecoin Price</button>
+    <div id="bcnbid"></div>
+    <div id="bcnask"></div>
+
+    <script>
+
+        var url1 = 'https://api.hitbtc.com/api/2/public/ticker/BTCUSD';
+        var url2 = 'https://api.hitbtc.com/api/2/public/ticker/BANCAUSD';
+        var url3 = 'https://api.hitbtc.com/api/2/public/ticker/BCNUSD';
+
+        document.getElementById('button1').addEventListener('click', loadBTC);
+
+        function loadBTC() {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', url1, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain');
+            xhr.onload = function () {
+
+                if (this.status == 200) {
+                    var price = JSON.parse(this.responseText);
+                    document.getElementById('btcbid').innerText = "BTC Bid: " + price.bid;
+                    document.getElementById('btcask').innerText = "BTC Ask: " + price.ask;
+                }
+            }
+            xhr.send();
+        }
+
+        document.getElementById('button2').addEventListener('click', loadBANCA);
+
+        function loadBANCA() {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', url2, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain');
+            xhr.onload = function () {
+
+                if (this.status == 200) {
+                    var price = JSON.parse(this.responseText);
+                    document.getElementById('bancabid').innerText = "BANCA Bid: " + price.bid;
+                    document.getElementById('bancaask').innerText = "BANCA Ask: " + price.ask;
+                }
+            }
+            xhr.send();
+        }
+
+        document.getElementById('button3').addEventListener('click', loadBCN);
+
+        function loadBCN() {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', url3, true);
+            xhr.setRequestHeader('Content-Type', 'text/plain');
+            xhr.onload = function () {
+
+                if (this.status == 200) {
+                    var price = JSON.parse(this.responseText);
+                    document.getElementById('bcnbid').innerText = "BCN Bid: " + price.bid;
+                    document.getElementById('bcnask').innerText = "BCN Ask: " + price.ask;
+                }
+            }
+            xhr.send();
+        }
+
+    </script>
+
+
+
+    <a href="./ODOA.html" class="link">
+        <section class="section section-a">
+            <div class="container1">
+                <h1>ODOA</h1>
+                <h2>ONESIMES DEPARTMENT OF ACCOUNTING</h2>
+                <p>In the Department of Accounting at Onesimes Corp. we thrive to produce accounting documentation that meets regulatory standard. We fully comply with the tax laws and uphold standards for the IRS and CRA.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOC.html" class="link">
+        <section class="section section-b">
+            <div class="container1">
+                <h1>ODOC</h1>
+                <h2>ONESIMES DEPARTMENT OF COMMERCE</h2>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOCA.html" class="link">
+        <section class="section section-c">
+            <div class="container1">
+                <h1>ODOCA</h1>
+                <h2>ONESIMES DEPARTMENT OF CIVIL AFFAIRS</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOD.html" class="link">
+        <section class="section section-d">
+            <div class="container1">
+                <h1>ODOD</h1>
+                <h2>ONESIMES DEPARTMENT OF DEFENSE</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOE.html" class="link">
+        <section class="section section-e">
+            <div class="container1">
+                <h1>ODOE</h1>
+                <h2>ONESIMES DEPARTMENT OF ENERGY</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOFA.html" class="link">
+        <section class="section section-f">
+            <div class="container1">
+                <h1>ODOFA</h1>
+                <h2>ONESIMES DEPARTMENT OF FORIEGN AFFAIRS</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOIE.html" class="link">
+        <section class="section section-g">
+            <div class="container1">
+                <h1>ODOIE</h1>
+                <h2>ONESIMES DEPARTMENT OF INDUSTRIAL ENERGY</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOJ.html" class="link">
+        <section class="section section-h">
+            <div class="container1">
+                <h1>ODOJ</h1>
+                <h2>ONESIMES DEPARTMENT OF JUSTICE</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOS.html" class="link">
+        <section class="section section-i">
+            <div class="container1">
+                <h1>ODOS</h1>
+                <h2>ONESIMES DEPARTMENT OF STATE</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <a href="./ODOT.html" class="link">
+        <section class="section section-j">
+            <div class="container1">
+                <h1>ODOT</h1>
+                <h2>ONESIMES DEPARTMENT OF TECHNOLOGY</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ut nisi odit, voluptas iste fugiat animi officia
+                    quos tenetur eum illum? Molestias quod alias optio eveniet accusantium provident dolorem facere.</p>
+            </div>
+        </section>
+    </a>
+    <div class="ads">
+    <div class="alignleft">
+        <script type="text/javascript">
+            amzn_assoc_ad_type = "banner";
+            amzn_assoc_marketplace = "amazon";
+            amzn_assoc_region = "US";
+            amzn_assoc_placement = "assoc_banner_placement_default";
+            amzn_assoc_campaigns = "indscieletric";
+            amzn_assoc_banner_type = "category";
+            amzn_assoc_p = "12";
+            amzn_assoc_isresponsive = "false";
+            amzn_assoc_banner_id = "1F8HXJ9N722QBR7D1S02";
+            amzn_assoc_width = "300";
+            amzn_assoc_height = "250";
+            amzn_assoc_tracking_id = "ocp0e-20";
+            amzn_assoc_linkid = "4b5ad1ddde796cfbcdee65aa518a1fea";
+        </script>
+        <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
+    </div>
+    <div class="alignleft">
+        <script type="text/javascript">
+              amzn_assoc_ad_type = "banner";
+       amzn_assoc_marketplace = "amazon";
+       amzn_assoc_region = "US";
+       amzn_assoc_placement = "assoc_banner_placement_default";
+       amzn_assoc_campaigns = "software";
+       amzn_assoc_banner_type = "category";
+       amzn_assoc_p = "12";
+       amzn_assoc_isresponsive = "false";
+       amzn_assoc_banner_id = "1S3CVF6H9PWB1HX81QG2";
+       amzn_assoc_width = "300";
+       amzn_assoc_height = "250";
+       amzn_assoc_tracking_id = "ocp0e-20";
+       amzn_assoc_linkid = "23ba37a18f1fada4db1a5f683465524f";
+        </script>
+        <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
+       </div>
+   
+          <iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&category=3dprint&banner=07DX77RXAPBWNNBR1WR2&f=ifr&linkID=38632e5b17084231c8743d3ac54f60ce&t=ocp0e-20&tracking_id=ocp0e-20"width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>
+
+    <div class="alignleft">
+        <script type="text/javascript">
+              amzn_assoc_ad_type = "banner";
+       amzn_assoc_marketplace = "amazon";
+       amzn_assoc_region = "US";
+       amzn_assoc_placement = "assoc_banner_placement_default";
+       amzn_assoc_campaigns = "software";
+       amzn_assoc_banner_type = "category";
+       amzn_assoc_p = "12";
+       amzn_assoc_isresponsive = "false";
+       amzn_assoc_banner_id = "06ESG4PQY5RV69W74882";
+       amzn_assoc_width = "300";
+       amzn_assoc_height = "250";
+       amzn_assoc_tracking_id = "ocp0e-20";
+       amzn_assoc_linkid = "ff6fb085c4a6c6287125524a1685b1c6";
+        </script>
+        <script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1"></script>
+       </div>
+       <iframe src="//rcm-na.amazon-adsystem.com/e/cm?o=1&p=12&l=ur1&category=software&banner=1S3CVF6H9PWB1HX81QG2&f=ifr&linkID=4433ef4283c64764099969d4da57dcd3&t=ocp0e-20&tracking_id=ocp0e-20" width="300" height="250" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe> 
+       </div>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>OCP TRADING</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>   
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.6.4/angular-sanitize.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.js"></script>
+        <script type="text/javascript"> 
+            var adfly_id = 18911949; 
+            var adfly_advert = 'int'; 
+            var frequency_cap = 5; 
+            var frequency_delay = 5; 
+            var init_delay = 3; 
+            var popunder = true; 
+        </script> 
+        <script src="https://cdn.ay.gy/js/entry.js"></script>
+    </head>
+    <body ng-app="onehitbtc">
+       
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <a class="navbar-brand" href="#">Crypto Robot</a>
+              </div>
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="http://www.cryptocap.ca/api/bcn">BCN/USD</a></li>
+                <li><a href="http://www.cryptocap.ca/api/eth">ETH/USD</a></li>
+                <li><a href="http://www.cryptocap.ca/api/xrp">XRP/USD</a></li>
+                <li><a href="http://www.cryptocap.ca/api/trx">TRX/USD</a></li>
+              </ul>
+            </div>
+          </nav>
+        <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display"
+                                        width="100%">
+        <thead>
+            <tr>
+                <th>
+                    BCN/USD
+                </th>
+                <th>
+                    ETH/USD
+                </th>
+                <th>
+                    XRP/USD
+                </th>
+                <th>
+                    TRX/USD
+                </th>
+            </tr>
+        </thead>
+        <tbody >
+                <th ng-controller="oneCtrl"> 
+                <ul ng-repeat="x in bcnorders">
+                    <li>Ask: {{x.tick.ask}} Robot Ask: {{x.ask.price}} Bid: {{x.tick.bid}} Robot Bid: {{x.bid.price}}</li>
+                    <li>Robot Ask Market Book Value: {{x.ask.mbk}} Robot Bid Market Book Value: {{x.bid.mbk}}</li>
+                    
+                </ul>
+          </th><th ng-controller="oneCtrl">
+                    <ul ng-repeat="order in ethorders">
+                        <li>Ask: {{order.tick.ask}} Robot Ask: {{order.ask.price}} Bid: {{order.tick.bid}} Robot Bid: {{order.bid.price}}</li>
+                        <li>Robot Ask Market Book Value: {{order.ask.mbk}} Robot Bid Market Book Value: {{order.bid.mbk}}</li>
+                    </ul>
+                </th>
+               
+                 <th ng-controller="oneCtrl"> 
+                        <ul ng-repeat="xrp in xrporders">
+                            <li>Ask: {{xrp.tick.ask}} Robot Ask: {{xrp.ask.price}} Bid: {{xrp.tick.bid}} Robot Bid: {{xrp.bid.price}}</li>
+                            <li>Robot Ask Market Book Value: {{xrp.ask.mbk}} Robot Bid Market Book Value: {{xrp.bid.mbk}}</li>
+                        </ul>
+                    </th>
+                    
+                     <th ng-controller="oneCtrl"> 
+                            <ul ng-repeat="trx in trxorders">
+                                <li>Ask: {{trx.tick.ask}} Robot Ask: {{trx.ask.price}} Bid: {{trx.tick.bid}} Robot Bid: {{trx.bid.price}}</li>
+                                <li>Robot Ask Market Book Value: {{trx.ask.mbk}} Robot Bid Market Book Value: {{trx.bid.mbk}}</li>
+                            </ul>
+                        </th>
+                        <script>
+                            var BCNa = new Array();
+                            var BCNasum = 0;
+                            var BCNb = new Array();
+                            var BCNbsum = 0;
+                            var ETHa = new Array();
+                            var ETHasum = 0;
+                            var ETHb = new Array();
+                            var ETHbsum = 0;
+                            var XRPa = new Array();
+                            var XRPasum = 0;
+                            var XRPb = new Array();
+                            var XRPbsum = 0;
+                            var TRXa = new Array();
+                            var TRXasum = 0;
+                            var TRXb = new Array();
+                            var TRXbsum = 0;
+                            var app = angular.module('onehitbtc', []);
+                            app.controller('oneCtrl', function($scope, $http) {
+                                $http.get("http://www.cryptocap.ca/api/bcn/")
+                                .then(function (response) {$scope.bcnorders = response.data;BCNa = new Array();BCNasum=0;BCNb = new Array();BCNbsum=0;response.data.forEach(function(packet) {
+                                    BCNa.push(packet.ask.price);BCNasum = BCNasum + packet.ask.mbk;BCNb.push(packet.bid.price);BCNbsum = BCNbsum + packet.bid.mbk;
+                                            });document.getElementById("bcnasum").innerHTML = BCNasum;document.getElementById("bcnbsum").innerHTML = BCNbsum;});
+                                $http.get("http://www.cryptocap.ca/api/eth/")
+                                    .then(function (response) {$scope.ethorders = response.data;ETHa = new Array();ETHasum=0;ETHb = new Array();ETHbsum=0;response.data.forEach(function(packet) {
+                                    ETHa.push(packet.ask.price);ETHasum = ETHasum + packet.ask.mbk;ETHb.push(packet.bid.price);ETHbsum = ETHbsum + packet.bid.mbk;
+                                            });document.getElementById("ethasum").innerHTML = ETHasum;document.getElementById("ethbsum").innerHTML = ETHbsum;});
+                                    $http.get("http://www.cryptocap.ca/api/xrp/")
+                                        .then(function (response) {$scope.xrporders = response.data;XRPa = new Array();XRPasum=0;XRPb = new Array();XRPbsum=0;response.data.forEach(function(packet) {
+                                    XRPa.push(packet.ask.price);XRPasum = XRPasum + packet.ask.mbk;XRPb.push(packet.bid.price);XRPbsum = XRPbsum + packet.bid.mbk;
+                                            });document.getElementById("xrpasum").innerHTML = XRPasum;document.getElementById("xrpbsum").innerHTML = XRPbsum;});
+                                        $http.get("http://www.cryptocap.ca/api/trx/")
+                                            .then(function (response) {$scope.trxorders = response.data;TRXa = new Array();TRXasum=0;TRXb = new Array();TRXbsum=0;response.data.forEach(function(packet) {
+                                    TRXa.push(packet.ask.price);TRXasum = TRXasum + packet.ask.mbk;TRXb.push(packet.bid.price);TRXbsum = TRXbsum + packet.bid.mbk;
+                                            });document.getElementById("trxasum").innerHTML = TRXasum;document.getElementById("trxbsum").innerHTML = TRXbsum;});
+                                        });
+                            </script>
+                  
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>
+                    BCNUSD
+
+                    <li id="bcnbsum"></li><li id="bcnasum"></li>
+                </th>
+                <th>
+                    ETHUSD
+
+                    <li id="ethbsum"></li><li id="ethasum"></li>
+                </th>
+                <th>
+                    XRPUSD
+
+                    <li id="xrpbsum"></li><li id="xrpasum"></li>
+                </th>
+                <th>
+                    TRXUSD
+
+                    <li id="trxbsum"></li><li id="trxasum"></li>
+                </th>
+            </tr>
+        </tfoot>
+    </table>
+        <!--/.wrapper-->
+        <div class="footer">
+            <div class="container">
+               <p style="text-align: center;"> ONESIMES CORP PRODUCTIONS</p>
+            </div>
+      
+    </body>
+    </html>

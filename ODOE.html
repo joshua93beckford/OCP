@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <title>OCP HEADQUARTERS</title>
+    <link rel="stylesheet" href="ODOE.css">
+</head>
+
+<body>
+    
+        <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="OCP.jpg" width="62" height="50">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="home.html">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOA.html">
+                                ODOA
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOC.html">
+                                ODOC
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOCA.html">
+                                ODOCA
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOD.html">
+                                ODOD
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOE.html">
+                                ODOE
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOFA.html">
+                                ODOFA
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOIE.html">
+                                ODOIE
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOJ.html">
+                                ODOJ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOS.html">
+                                ODOS
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="ODOT.html">
+                                ODOT
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <header>
+            <h1 id="header">Onesimes Department Of Education</h1>
+        </header>
+        <div class="container"></div>
+        <p>User Choice:
+            <span id="uc">'r','p', or's'</span>
+        </p>
+        <p>Computer Choice:
+            <span id="cc"></span>
+        </p>
+        <p>Wins:
+            <span id="w"></span>
+        </p>
+        <p>Losses:
+            <span id="l"></span>
+        </p>
+        <p>Ties:
+            <span id="t">
+            </span>
+        </p>
+
+        <script type="text/javascript">
+
+
+
+
+            var userText = document.getElementById("uc");
+            var cText = document.getElementById("cc");
+            var wText = document.getElementById("w");
+            var lText = document.getElementById("l");
+            var tText = document.getElementById("t");
+            var win = 0;
+            var loss = 0;
+            var tie = 0;
+            document.addEventListener("keyup", play);
+
+            function play(event) {
+                if (event.key == "r" || event.key == "p" || event.key == "s") {
+
+                    var cHand = Math.random() * 3;
+                    console.log(cHand);
+                    if (event.key == "r") {
+                        userText.textContent = "User Slected Rock";
+                        if (cHand < 1) {
+                            cText.textContent = "Computer Slected Rock";
+                            tie++;
+                            tText.textContent = tie;
+                        }
+                        else if (cHand < 2) {
+                            cText.textContent = "Computer Slected Paper";
+                            loss++;
+                            lText.textContent = loss;
+                        }
+                        else {
+                            cText.textContent = "Computer Slected Scissors";
+                            win++;
+                            wText.textContent = win;
+                        }
+                    }
+                    else if (event.key == "p") {
+                        userText.textContent = "User Slected Paper";
+                        if (cHand < 1) {
+                            cText.textContent = "Computer Slected Rock";
+                            loss++;
+                            lText.textContent = loss;
+                        }
+                        else if (cHand < 2) {
+                            cText.textContent = "Computer Slected Paper";
+                            tie++;
+                            tText.textContent = tie;
+                        }
+                        else {
+                            cText.textContent = "Computer Slected Scissors";
+                            win++;
+                            wText.textContent = win;
+                        }
+                    }
+                    else {
+                        userText.textContent = "User Slected Scissors";
+                        if (cHand < 1) {
+                            cText.textContent = "Computer Slected Rock";
+                            loss++;
+                            lText.textContent = loss;
+                        }
+                        else if (cHand < 2) {
+                            cText.textContent = "Computer Slected Paper";
+                            win++;
+                            wText.textContent = win;
+                        }
+                        else {
+                            cText.textContent = "Computer Slected Scissors";
+                            tie++;
+                            tText.textContent = tie;
+                        }
+                    }
+                }
+            }
+        </script>
+         <div class="row">
+        <div id="keyboard">
+           
+            <div id="whitekey1" class="col-12" onmouseover="playC3()" onclick="playC3()">C</div>
+            <div id="whitekey2" class="col-12" onmouseover="playCS3()" onclick="playCS3()">C#</div>
+            <div id="whitekey3" class="col-12" onmouseover="playD3()" onclick="playD3()">D</div>
+            <div id="whitekey4" class="col-12" onmouseover="playDS3()" onclick="playDS3()">D#</div>
+            <div id="whitekey5" class="col-12" onmouseover="playE3()" onclick="playE3()">E</div>
+            <div id="whitekey6" class="col-12" onmouseover="playF3()" onclick="playF3()">F</div>
+            <div id="whitekey7" class="col-12" onmouseover="playFS3()" onclick="playF3()">F#</div>
+            <div id="whitekey8" class="col-12" onmouseover="playG3()" onclick="playG3()">G</div>
+            <div id="whitekey9" class="col-12" onmouseover="playGS3()" onclick="playGS3()">G#</div>
+            <div id="whitekey10" class="col-12" onmouseover="playA3()" onclick="playA3()">A</div>
+            <div id="whitekey11" class="col-12" onmouseover="playAS3()" onclick="playAS3()">A#</div>
+            <div id="whitekey12" class="col-12" onmouseover="playB3()" onclick="playB3()">B</div>
+
+        </div>
+    </div>
+    </div>
+    <script>
+        function playA3() {
+            var c1 = new Audio('A3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playAS3() {
+            var c1 = new Audio('AS3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playB3() {
+            var c1 = new Audio('B3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playC3() {
+            var c1 = new Audio('C3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playCS3() {
+            var c1 = new Audio('CS3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playD3() {
+            var c1 = new Audio('D3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playDS3() {
+            var c1 = new Audio('DS3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playE3() {
+            var c1 = new Audio('E3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playF3() {
+            var c1 = new Audio('F3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playFS3() {
+            var c1 = new Audio('FS3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playG3() {
+            var c1 = new Audio('G3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+        function playGS3() {
+            var c1 = new Audio('GS3.wav');
+            c1.currentTime = 0;
+            c1.play();
+        }
+    </script>
+</body>

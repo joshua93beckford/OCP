@@ -1,0 +1,141 @@
+html{
+    font-size: 24px;
+}
+#header{
+    font-size: 2rem;
+    color: #444;
+    text-align: center;
+}
+#keyboard{
+    width: 100%;
+    height:30%;
+    background-color: #4200E8;
+    position: absolute;
+
+}
+#whitekey1
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:1rem;
+    background-color: #fff;
+}
+#whitekey2
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:6rem;
+    background-color: #222;
+    color: #eee;
+
+}
+#whitekey3
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:11rem;
+    background-color: #fff;
+}
+#whitekey4
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:16rem;
+    background-color: #222;
+    color: #eee;
+}
+#whitekey5
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:21rem;
+    background-color: #fff;
+}
+#whitekey6
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:26rem;
+    background-color: #fff;
+}
+#whitekey7
+{  
+    margin: 0.1rem;;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:31rem;
+    background-color: #222;
+    color: #eee;
+}
+#whitekey8
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:36rem;
+    background-color: #fff;
+}
+#whitekey9
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:41rem;
+    background-color: #222;
+    color: #eee;
+}
+#whitekey10
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:46rem;
+    background-color: #fff;
+}
+#whitekey11
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:51rem;
+    background-color: #222;
+    color: #eee;
+}
+#whitekey12
+{  
+    margin: 0.1rem;
+    position:absolute;
+    width:6%;
+    height:80%;
+    top:1rem;
+    left:56rem;
+    background-color: #fff;
+}
